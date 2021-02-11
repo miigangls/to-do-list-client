@@ -1,7 +1,10 @@
 import React from 'react';
 import  {Content} from '../components'
-import Header from './header'
-import Add from './add'
+
+import Header from './tasks/header'
+import Add from './tasks/add'
+import Filters from './tasks/filters'
+import Tasks from './tasks/tasks'
 
  const Layout = () => {
     return (
@@ -9,6 +12,10 @@ import Add from './add'
             <Content>
                 <Header/>
                 <Add /> 
+            </Content>
+            <Content>
+                <Filters />
+                <Tasks /> 
             </Content>
         </div>
     );
