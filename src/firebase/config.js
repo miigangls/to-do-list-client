@@ -1,5 +1,5 @@
 
-import firebase from 'firebase'
+//import firebase from 'firebase'
 import app from 'firebase/app'
 import 'firebase/auth';
 import 'firebase/firestore';
@@ -23,7 +23,7 @@ const CONFIG = {
     measurementId
   };
 
-const fire = firebase.initializeApp(CONFIG);
+const fire = app.initializeApp(CONFIG);
 const auth = app.auth()
 const db = app.firestore()
 const storage =  app.storage()
