@@ -1,0 +1,20 @@
+/* The alert message box */
+
+.alert {
+  padding: 10px; 
+  margin: 1rem 0;
+}
+
+.alert .alert-error {
+    padding: 20px;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    margin: 2rem;
+  }
+  
+  .alert .alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+} 
