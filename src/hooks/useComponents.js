@@ -27,24 +27,16 @@ const useComponents = (stateInicial,  fn) => {
     // Función que se ejecuta cuando el usuario hace submit
     const handleSubmit = e => {
         e.preventDefault();
-        //const errorValidacion = validar(values);
-        //saveErrors(errorValidacion);
         saveSubmitForm(true);
     }
 
 
-    // cuando se realiza el evento de blur
-    const handleBlur = () => {
-        //const errorValidacion = validar(values);
-        //saveErrors(errorValidacion);
-    }
 
     return {
         values, 
         errors, 
         handleSubmit,
-        handleChange,
-        handleBlur
+        handleChange
     }
 }
  
