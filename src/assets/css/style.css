@@ -3,6 +3,7 @@
 
 @import './skeleton/normalize.css';
 @import './skeleton/skeleton.css';
+@import './login.css';
 
 body {
     font-family: "Open Sans", sans-serif;
