@@ -13,7 +13,7 @@ export const Password = (props) => {
             onChange={handleChange}
             onBlur={handleBlur}
             maxLength={maxlength}
-            minlength={minlength}
+            minLength={minlength}
             className={className}
         />
     }
@@ -30,7 +30,7 @@ export const Password = (props) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 maxLength={maxlength}
-                minlength={minlength}
+                minLength={minlength}
                 className={className}
             />
         </div>
