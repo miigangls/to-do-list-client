@@ -10,12 +10,13 @@
     "firebase-admin": "^9.5.0",
     "hookrouter": "^1.2.5",
     "react": "^17.0.1",
+    "react-cookie": "^4.0.3",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": " REACT_APP_NODE_DEV=True react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
