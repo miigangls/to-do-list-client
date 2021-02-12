@@ -10,3 +10,11 @@ export function getValidEmail(value) {
 
     return {error: false};
 }
+
+
+export function filter(data, value) {
+    if(value !== 'all' && value !== '' ){
+        data = data.filter(({data}) => data.status.toString() === value)
+    }
+    return data
+}
