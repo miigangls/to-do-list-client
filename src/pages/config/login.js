@@ -1,18 +1,19 @@
 import React,{ useState }  from 'react';
-import { Email, Password } from '../components'
-import { login } from '../firebase/fetch'
-import { getValidEmail } from '../utils'
-import useComponents from '../hooks/useComponents'
+import { Email, Password } from '../../components'
+import { login } from '../../firebase/fetch'
+import { getValidEmail } from '../../utils'
+import useComponents from '../../hooks/useComponents'
+import State  from '../states'
 
 const STATE_INICIAL = {
     email: '',
     password: ''
 }
 
-const Login = () => {
+const Login = (props) => {
 
   const [ useMessage, setMessage] = useState('');
-  const { values, handleChange } = useComponents(STATE_INICIAL);
+  const { values, handleChange } = useComponents(State.login);
 
   const { email, password } = values;
 
@@ -51,6 +52,9 @@ const Login = () => {
                     className="from-input"
                 />
                 {useMessage && <div className="message message-error">{useMessage} </div>}
+
+                <button onClick={() => props.onClickRegister()}>  Registro </button>
+                
                 <button onClick={onClick} className="btn-login" htmlType="submit">
                     Aceptar
                 </button>
