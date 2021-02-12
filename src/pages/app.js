@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from './layout';
-import Login from './login'
+import Login from './config/'; 
 import UseAut from '../hooks/useAut'
 import { CookiesProvider } from 'react-cookie';
 
