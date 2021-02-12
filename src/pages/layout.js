@@ -13,7 +13,6 @@ import Tasks from './tasks/tasks'
             <form id="abc">            
                 <Content>
                     <Header/>
-                    <Add  /> 
                 </Content>
                 <Content>
                     <Tasks /> 

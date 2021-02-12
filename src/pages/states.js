@@ -1,5 +1,6 @@
 const STATE_INICIAL = {
-    filters:{
+    tasks:{
+        task: '',
         filter: 'all',
         sort: 'asc',
     },
