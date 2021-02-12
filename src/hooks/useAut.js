@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie';
 import {COOKIE_NAME, COOKIE_OPTIONS} from '../firebase/cookies'
 
 function useAuthenticated() {
-    const [cookies, setCookie] = useCookies([COOKIE_NAME])
+    let [cookies, setCookie] = useCookies([COOKIE_NAME])
     , {user } = cookies[COOKIE_NAME] || {}
     
     useEffect(() => {
@@ -21,7 +21,7 @@ function useAuthenticated() {
     }, []);
 
     return {
-        userId: user.uid
+        userId: user?.uid || false
     };
 }
 
