@@ -1,20 +1,38 @@
 import React from 'react';
+import { fetchAddTask } from '../../firebase/fetch';
+import useComponents from '../../hooks/useComponents'
+import UseAut from '../../hooks/useAut'
+import UseTasks from '../../hooks/useTasks'
+import {Text} from '../../components'
 
-const add = () => {
+const STATE_INICIAL = {
+    task: '',
+}
+
+const AddTask = (props) => {
+    const {userId} =  UseAut()
+    const {fetchTasks} = UseTasks({userId, order:'desc'})
+    const { values, handleChange } = useComponents(STATE_INICIAL);
+    
+    const { task } = values;
+    async function onClick (e) {
+        e.preventDefault();
+        let rest = await fetchAddTask({userId,task, status: true })
+        if(rest.error) console.log('no se puedo agregar la tarea', rest.error)
+        fetchTasks()
+    }
     return (
         <div className="row">
-            <form className="form">
                 <div className="input-row ">
                     <div className="eleven columns">
-                        <input className="u-full-width" type="text"  />
+                        <Text placeholder="Ingresa una nueva tarea"  handleChange= {handleChange} name="task" noFormItem={true} />
                     </div>
                     <div className="one columns">
-                        <button className="button-primary"><i className="fas fa-plus"></i></button>
+                        <button onClick={onClick} className="button-primary"><i className="fas fa-plus"></i></button>
                     </div>    
                 </div>
-            </form>
         </div>
     );
 };
 
-export default add;
+export default AddTask;
