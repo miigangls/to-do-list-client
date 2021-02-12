@@ -21,9 +21,9 @@ export async function closeSession() {
 }
 
 
-export async function fetchTaskList(userId, orden) {
+export async function fetchTaskList({userId, orden}) {
     return  await new Promise ((resolve, reject)=> {
-        db.collection("tasks-list").where("userId", "==", 'Izl50QIOFeeFxZbor1L8v5H388b2').get().then(function(querySnapshot) {
+        db.collection("tasks-list").where("userId", "==", userId).get().then(function(querySnapshot) {
             let data = []
             querySnapshot.forEach(function(doc) {
                 if (doc.exists) {
