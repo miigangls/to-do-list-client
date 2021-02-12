@@ -203,6 +203,14 @@ body {
     filter: alpha(opacity=0)
 }
 
+.form-check .form-check-label > a {
+    margin-left:auto;  
+    float: right;  
+    width:20px; 
+    z-index: 99999;
+    color: #454949;
+}
+
 input[type="radio"],
 input[type="checkbox"] {
     box-sizing: border-box;

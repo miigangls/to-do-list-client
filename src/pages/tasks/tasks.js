@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { fetchActiveTask, fetchCompleteTask } from '../../firebase/fetch';
-import { filter,   } from '../../utils'
+import { fetchActiveTask, fetchCompleteTask, fetchDeleteTask } from '../../firebase/fetch';
+import { filter  } from '../../utils'
 import UseTasks from '../../hooks/useTasks'
 import useComponents from '../../hooks/useComponents'
 import UseAut from '../../hooks/useAut'
 import State from '../states'
+import { A } from 'hookrouter';
 
 const Task = (props) => {
     const {userId} =  UseAut()
@@ -22,6 +23,12 @@ const Task = (props) => {
         } else {
             await fetchActiveTask({id: data.id, userId, task: data.task, status: true }) 
         }
+        fetchTasks()
+    }
+
+    async function onClickDelete (e, id) {
+        e.preventDefault();
+        await fetchDeleteTask({id}) 
         fetchTasks()
     }
 
@@ -44,13 +51,16 @@ const Task = (props) => {
             <div className="list-wrapper">
                 <ul>
                     {
-                        data.map(({data, id})=> {
+                        data.map(({data, id}, i) => {
                             return <li key={id} className={(!data.status)? 'completed' : ''}>
                                 <div className="form-check"> 
                                     <label  className="form-check-label"> 
                                     <input checked={(!data.status)? true : false}  onChange={(e)=> onClick(e, {...data, id})}  className="checkbox" type="checkbox" /> 
-                                    {data.task} 
+                                    {`${i + 1}. ${data.task}`} 
                                     <i className="input-helper" ></i>
+                                    <a onClick={(e)=> onClickDelete(e, id)} >
+                                        <i class="fas fa-trash-alt"></i>    
+                                    </a>
                                     </label> 
                                 </div> 
                             </li>
