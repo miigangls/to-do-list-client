@@ -53,7 +53,7 @@ const Login = (props) => {
                 />
                 {useMessage && <div className="message message-error">{useMessage} </div>}
 
-                <button onClick={() => props.onClickRegister()}>  Registro </button>
+                <a onClick={() => props.onClickRegister()}>  Registro </a>
                 
                 <button onClick={onClick} className="btn-login" htmlType="submit">
                     Aceptar

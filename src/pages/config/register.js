@@ -53,6 +53,8 @@ const Register = (props) => {
                     className="from-input"
                 />
                 {useMessage && <div className="message message-error">{useMessage} </div>}
+
+                <a className="from-a" onClick={() => props.onClickRegister()}>  Ingreso </a>
                 <button onClick={onClick} className="btn-login" htmlType="submit">
                     Aceptar
                 </button>
