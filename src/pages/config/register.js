@@ -33,7 +33,7 @@ const Register = (props) => {
 
                 <Text label="nombre" placeholder="Nombre"  
                 handleChange= {handleChange} 
-                name="nombre"  />
+                name="nombre" className="from-input"  noFormItem />
 
                 <Email label="email" 
                     name="email" 
