@@ -27,7 +27,7 @@ export async function fetchTaskList({userId, orden}) {
             let data = []
             querySnapshot.forEach(function(doc) {
                 if (doc.exists) {
-                    data.push({id: doc.id, data: doc.data()})
+                    data.push({id: doc.id, data: {...doc.data()}})
                     resolve({message: "ok", data})
                 } else {
                     console.log("No such document!");
