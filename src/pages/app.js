@@ -1,20 +1,14 @@
 import React from 'react';
-import {useRoutes} from 'hookrouter';
-import Tasks from './layout';
+import Layout from './layout';
 import Login from './login'
-//import {UserAutContext} from '../providers/userAut'
-
-const routes = {
-    '/': () => <Login />,
-    '/tasks': () => <Tasks />
-};
+import UseAut from '../hooks/useAut'
+import { CookiesProvider } from 'react-cookie';
 
 function App(props) {
-    const routeResult = useRoutes(routes);
-   
-    return (<>
-            {routeResult}
-        </>
+    const {userId} =  UseAut()
+    return (<CookiesProvider>
+           {(!userId) ?  <Login /> : <Layout />} 
+        </CookiesProvider>
     );
 }
 
