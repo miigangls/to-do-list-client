@@ -22,6 +22,7 @@ const Task = (props) => {
         fetchTasks();
     }, [data.length]);
 
+    
     // Create a new task
     async function onClickAdd (e) {
         e.preventDefault();
@@ -29,6 +30,7 @@ const Task = (props) => {
         if(rest.error) console.log('no se puedo agregar la tarea', rest.error)
         fetchTasks()
     }
+    
     // change task status
     async function onClickStatus(e, data) {
         e.preventDefault();
@@ -39,15 +41,13 @@ const Task = (props) => {
         }
         fetchTasks()
     }
+
     // Delete a task.
     async function onClickDelete (e, id) {
         e.preventDefault();
         await fetchDeleteTask({id}) 
         fetchTasks()
     }
-
-    
-
 
     data = filter(data, values.filter) // Filter data based on its status
 
