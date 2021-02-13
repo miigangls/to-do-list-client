@@ -3,7 +3,7 @@
 Este proyecto fue desarrollado con [Create React App](https://github.com/facebook/create-react-app).
 
 ## Diseño
-Proyecto in [Behance](https://www.behance.net/gallery/113416947/Lista-de-tareas)
+Proyecto en [Behance](https://www.behance.net/gallery/113416947/Lista-de-tareas)
 
 ## Caracteristicas
 
@@ -28,7 +28,7 @@ Proyecto in [Behance](https://www.behance.net/gallery/113416947/Lista-de-tareas)
 ```
 
 
-## Pasos para correr su proyecto localmente
+## Pasos para correr su proyecto local
 
 - Configurar su computadora para ejecutar aplicaciones en React.js
 - Descarga el repositorio localmente `git clone https://github.com/miigangls/todo-list-client.git`
