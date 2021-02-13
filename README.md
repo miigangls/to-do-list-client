@@ -28,7 +28,7 @@ Proyecto en [Behance](https://www.behance.net/gallery/113416947/Lista-de-tareas)
 ```
 
 
-## Pasos para correr su proyecto local
+## Pasos para correr el proyecto localmente
 
 - Configurar su computadora para ejecutar aplicaciones en React.js
 - Descarga el repositorio localmente `git clone https://github.com/miigangls/todo-list-client.git`
