@@ -6,16 +6,16 @@ import { fetchActiveTask
 import {Text} from '../../components'
 import { filter  } from '../../utils'
 import UseTasks from '../../hooks/useTasks'
-import useComponents from '../../hooks/useComponents'
-import UseAut from '../../hooks/useAut'
+import UseComponents from '../../hooks/useComponents'
+import UseAuthenticated from '../../hooks/useAuthenticated'
 import State from '../states'
 
 
 
 const Task = (props) => {
-    const {userId} =  UseAut()
-    const { values , handleChange } = useComponents(State.tasks);
-    const { useTasks, fetchTasks} = UseTasks({userId, order:values.sort})
+    const {userId} =  UseAuthenticated()
+    const { useValues , handleChange } = UseComponents(State.tasks);
+    const { useTasks, fetchTasks} = UseTasks({userId, order: useValues.sort})
     let { data } = useTasks
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const Task = (props) => {
     // Create a new task
     async function onClickAdd (e) {
         e.preventDefault();
-        let rest = await fetchAddTask({userId, task: values.task, status: true })
+        let rest = await fetchAddTask({userId, task: useValues.task, status: true })
         if(rest.error) console.log('no se puedo agregar la tarea', rest.error)
         fetchTasks()
     }
@@ -49,7 +49,7 @@ const Task = (props) => {
         fetchTasks()
     }
 
-    data = filter(data, values.filter) // Filter data based on its status
+    data = filter(data, useValues.filter) // Filter data based on its status
 
     return (
         <>
@@ -86,7 +86,7 @@ const Task = (props) => {
                                     {`${i + 1}. ${data.task}`} 
                                     <i className="input-helper" ></i>
                                     <a onClick={(e)=> onClickDelete(e, id)} >
-                                        <i class="fas fa-trash-alt"></i>    
+                                        <i className="fas fa-trash-alt"></i>    
                                     </a>
                                     </label> 
                                 </div> 

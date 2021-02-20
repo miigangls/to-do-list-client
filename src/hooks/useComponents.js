@@ -2,24 +2,19 @@ import React, { useState, useEffect } from 'react';
 
 const useComponents = (stateInicial,  fn) => {
 
-    const [values, saveValues ] = useState(stateInicial);
-    const [errors, saveErrors ] = useState({});
-    const [ submitForm, saveSubmitForm ] = useState(false);
+    const [ useValues, setSaveValues ] = useState(stateInicial);
+    const [ useSubmit, setSaveSubmit ] = useState(false);
 
     useEffect(() => {
-        if(submitForm) {
-            const noErrores = Object.keys(errors).length === 0;
-            if(noErrores) {
-                fn(); // Fn = Función que se ejecuta en el componente
-            }
-            saveSubmitForm(false);
+        if(useSubmit) {
+            setSaveSubmit(false);
         }
-    }, [errors]);
+    }, []);
 
     // Función que se ejecuta conforme el usuario escribe algo
     const handleChange = e => {
-        saveValues({
-            ...values,
+        setSaveValues({
+            ...useValues,
             [e.target.name] : e.target.value
         })
     }
@@ -27,14 +22,11 @@ const useComponents = (stateInicial,  fn) => {
     // Función que se ejecuta cuando el usuario hace submit
     const handleSubmit = e => {
         e.preventDefault();
-        saveSubmitForm(true);
+        setSaveSubmit(true);
     }
 
-
-
     return {
-        values, 
-        errors, 
+        useValues, 
         handleSubmit,
         handleChange
     }

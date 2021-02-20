@@ -1,11 +1,11 @@
 import React from 'react';
 import Layout from './layout';
 import Login from './config/'; 
-import UseAut from '../hooks/useAut'
+import UseAuthenticated from '../hooks/useAuthenticated'
 import { CookiesProvider } from 'react-cookie';
 
 function App(props) {
-    const {userId} =  UseAut()
+    const {userId} =  UseAuthenticated()
     return (<CookiesProvider>
            {(!userId) ?  <Login /> : <Layout />} 
         </CookiesProvider>

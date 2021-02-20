@@ -1,10 +1,7 @@
 import React from 'react';
-import {useCookies}  from 'react-cookie'
 import { closeSession } from '../../firebase/fetch'
-import {COOKIE_NAME, COOKIE_OPTIONS} from '../../firebase/cookies'
 
 const Header = () => {
-    const [removeCookie] = useCookies([COOKIE_NAME]);
 
     async function onClick (e, ) {
         e.preventDefault();
@@ -21,8 +18,6 @@ const Header = () => {
                         <i class="fas fa-power-off"></i>
                     </button>
                 </div>
-                
-                
             </header>
         </div>
     );

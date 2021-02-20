@@ -1,6 +1,6 @@
 import React from 'react';
 import { fetchAddTask } from '../../firebase/fetch';
-import useComponents from '../../hooks/useComponents'
+import UseComponents from '../../hooks/useComponents'
 import UseAut from '../../hooks/useAut'
 import UseTasks from '../../hooks/useTasks'
 import {Text} from '../../components'
@@ -12,7 +12,7 @@ const STATE_INICIAL = {
 const AddTask = (props) => {
     const {userId} =  UseAut()
     const {fetchTasks} = UseTasks({userId, order:'desc'})
-    const { values, handleChange } = useComponents(STATE_INICIAL);
+    const { values, handleChange } = UseComponents(STATE_INICIAL);
     
     const { task } = values;
     async function onClick (e) {

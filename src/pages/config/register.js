@@ -1,22 +1,22 @@
 import React,{ useState }  from 'react';
 import { Email, Password, Text } from '../../components'
-import { register, login } from '../../firebase/fetch'
-import { getValidEmail } from '../../utils'
+import { register } from '../../firebase/fetch'
+import { validateEmail } from '../../utils'
 import useComponents from '../../hooks/useComponents'
 import State  from '../states'
 
 
 const Register = (props) => {
 
-  const [ useMessage, setMessage] = useState('');
-  const { values, handleChange } = useComponents(State.register);
+  const [ Message, setMessage] = useState('');
+  const { useValues, handleChange } = useComponents(State.register);
 
-  const { nombre, email, password } = values;
+  const { nombre, email, password } = useValues
 
   async function onClick (e) {
     e.preventDefault();
     try {
-        let {error, message} = getValidEmail(email)
+        let {error, message} = validateEmail(email)
         if(error) return setMessage(message)
         await register( nombre, email, password);
         props.onClickRegister()
@@ -52,9 +52,9 @@ const Register = (props) => {
                     noFormItem={true}
                     className="from-input"
                 />
-                {useMessage && <div className="message message-error">{useMessage} </div>}
+                {Message && <div className="message message-error">{Message} </div>}
 
-                <a className="from-a" onClick={() => props.onClickRegister()}>  Ingreso </a>
+                <a className="from-a" onClick={props.onClickRegister}>  Ingreso </a>
                 <button onClick={onClick} className="btn-login" htmlType="submit">
                     Aceptar
                 </button>

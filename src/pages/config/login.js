@@ -1,26 +1,21 @@
 import React,{ useState }  from 'react';
 import { Email, Password } from '../../components'
 import { login } from '../../firebase/fetch'
-import { getValidEmail } from '../../utils'
+import { validateEmail } from '../../utils'
 import useComponents from '../../hooks/useComponents'
 import State  from '../states'
 
-const STATE_INICIAL = {
-    email: '',
-    password: ''
-}
-
 const Login = (props) => {
 
-  const [ useMessage, setMessage] = useState('');
-  const { values, handleChange } = useComponents(State.login);
+  const [ Message, setMessage] = useState('');
+  const { useValues, handleChange } = useComponents(State.login);
 
-  const { email, password } = values;
+  const { email, password } = useValues;
 
   async function onClick (e) {
     e.preventDefault();
     try {
-        let {error, message} = getValidEmail(email)
+        let {error, message} = validateEmail(email)
         if(error) return setMessage(message)
         await login(email, password);
         //useRedirect()
@@ -51,9 +46,9 @@ const Login = (props) => {
                     noFormItem={true}
                     className="from-input"
                 />
-                {useMessage && <div className="message message-error">{useMessage} </div>}
+                {Message && <div className="message message-error">{Message} </div>}
 
-                <a onClick={() => props.onClickRegister()}>  Registro </a>
+                <a onClick={props.onClickRegister}>  Registro </a>
                 
                 <button onClick={onClick} className="btn-login" htmlType="submit">
                     Aceptar

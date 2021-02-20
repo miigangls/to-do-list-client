@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {auth} from '../firebase';
 import { useCookies } from 'react-cookie';
 import {COOKIE_NAME, COOKIE_OPTIONS} from '../firebase/cookies'

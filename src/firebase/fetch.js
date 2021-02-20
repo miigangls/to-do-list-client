@@ -11,7 +11,6 @@ export async function register(name, email, password) {
 
 // User login
 export async function login(email, password) {
-    console.log(email, password);
     return auth.signInWithEmailAndPassword(email, password);
 }
 
@@ -30,7 +29,6 @@ export async function fetchTaskList({userId, order}) {
             let data = []
             querySnapshot.forEach(function(doc) {
                 if (doc.exists) {
-                    console.log(order);
                     data.push({id: doc.id, data: {...doc.data()}})
                     resolve({message: "ok", data})
                 } else {
