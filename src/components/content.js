@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 
 export const Content = ({children}) => {
     return (
@@ -8,3 +10,7 @@ export const Content = ({children}) => {
     );
 };
 
+
+Content.propTypes = {
+    children: PropTypes.elementType,
+};

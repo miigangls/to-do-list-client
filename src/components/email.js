@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types';
+
 
 export const Email = (props) => {
     let {handleChange, label, value, handleBlur, noFormItem, placeholder, name, className} = props;
@@ -31,4 +33,19 @@ export const Email = (props) => {
             />
         </div>
     );
+};
+
+
+Email.propTypes = {
+    noFormItem: PropTypes.bool,
+    style: PropTypes.object,
+    className: PropTypes.string,
+    type: PropTypes.string,
+    placeholder: PropTypes.string, 
+    value: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]),
+    handleChange: PropTypes.func,
+    onBlur: PropTypes.func,
 };

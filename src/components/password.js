@@ -1,7 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types';
+
 
 export const Password = (props) => {
-    let {name,label, placeholder, handleChange, value, handleBlur, noFormItem, maxlength, minlength, className} = props;
+    let { name, label, placeholder,  value,  noFormItem, maxlength, minlength, className } = props;
+    let { handleChange, handleBlur } = props
 
     if (noFormItem) {
       return <input 
@@ -35,4 +38,21 @@ export const Password = (props) => {
             />
         </div>
     );
+};
+
+
+Password.propTypes = {
+    noFormItem: PropTypes.bool,
+    style: PropTypes.object,
+    className: PropTypes.string,
+    type: PropTypes.string,
+    placeholder: PropTypes.string, 
+    value: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]),
+    handleChange: PropTypes.func,
+    onBlur: PropTypes.func,
+    maxlength: PropTypes.number,  
+    minlength: PropTypes.number
 };
