@@ -15,12 +15,12 @@ import State from '../states'
 const Task = (props) => {
     const {userId} =  UseAuthenticated()
     const { useValues , handleChange } = UseComponents(State.tasks);
-    const { useTasks, fetchTasks} = UseTasks({userId, order: useValues.sort})
+    let { useTasks, fetchTasks} = UseTasks({userId, order: useValues.sort})
     let { data } = useTasks
 
     useEffect(() => {
-        fetchTasks();
-    }, [data.length]);
+        fetchTasks()
+    }, [useTasks.data.length]);
 
     
     // Create a new task
@@ -45,7 +45,8 @@ const Task = (props) => {
     // Delete a task.
     async function onClickDelete (e, id) {
         e.preventDefault();
-        await fetchDeleteTask({id}) 
+        let rest =  await fetchDeleteTask({id}) 
+        if(rest.error) console.log('no se puedo agregar la tarea', rest.error)
         fetchTasks()
     }
 
@@ -54,6 +55,7 @@ const Task = (props) => {
     return (
         <>
         <div className="row">
+            <form onSubmit={onClickAdd}>
                 <div className="input-row ">
                     <div className="eleven columns">
                         <Text placeholder="Ingresa una nueva tarea"  handleChange= {handleChange} name="task" noFormItem={true} />
@@ -62,13 +64,15 @@ const Task = (props) => {
                         <button onClick={onClickAdd} className="button-primary"><i className="fas fa-plus"></i></button>
                     </div>    
                 </div>
+            </form>
+                
         </div>
         <div className="input-filter row">
         <div style={{marginRight: 'auto'}} ></div>
             <div className="align-items" >
                 <label className="text-label">Fitrar</label>
-                <select  name="filter" onChange={handleChange} className="custom-select custom-select-sm btn my-2">
-                    <option value="all" selected>Todas</option>
+                <select  defaultValue={useValues.filter}  name="filter" onChange={handleChange} className="custom-select custom-select-sm btn my-2">
+                    <option value="all">Todas</option>
                     <option value={false}>Completadas</option>
                     <option value={true}>Activas</option>
                 </select>
