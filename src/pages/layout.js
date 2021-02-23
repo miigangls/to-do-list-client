@@ -6,15 +6,13 @@ import Tasks from './tasks/tasks'
 
  const Layout = () => {
     return (
-        <div className="container">
-            <form id="abc">            
+        <div className="container">            
                 <Content>
                     <Header/>
                 </Content>
                 <Content>
                     <Tasks /> 
                 </Content>
-            </form>
         </div>
     );
 };
