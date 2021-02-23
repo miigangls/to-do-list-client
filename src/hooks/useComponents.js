@@ -25,10 +25,19 @@ const useComponents = (stateInicial,  fn) => {
         setSaveSubmit(true);
     }
 
+    const handleClear = (value) => {
+        setSaveValues({
+            ...useValues,
+            [value] : ""
+        })
+        console.log(value);
+    }
+
     return {
         useValues, 
         handleSubmit,
-        handleChange
+        handleChange, 
+        handleClear
     }
 }
  

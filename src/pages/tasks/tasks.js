@@ -12,9 +12,9 @@ import State from '../states'
 
 
 
-const Task = (props) => {
+const Task = () => {
     const {userId} =  UseAuthenticated()
-    const { useValues , handleChange } = UseComponents(State.tasks);
+    const { useValues , handleChange, handleClear  } = UseComponents(State.tasks);
     let { useTasks, fetchTasks} = UseTasks({userId, order: useValues.sort})
     let { data } = useTasks
 
@@ -29,7 +29,9 @@ const Task = (props) => {
         let rest = await fetchAddTask({userId, task: useValues.task, status: true })
         if(rest.error) console.log('no se puedo agregar la tarea', rest.error)
         fetchTasks()
+        handleClear('task')
     }
+
     
     // change task status
     async function onClickStatus(e, data) {
@@ -58,7 +60,7 @@ const Task = (props) => {
             <form onSubmit={onClickAdd}>
                 <div className="input-row ">
                     <div className="eleven columns">
-                        <Text placeholder="Ingresa una nueva tarea"  handleChange= {handleChange} name="task" noFormItem={true} />
+                        <Text placeholder="Ingresa una nueva tarea" value={useValues.task}  handleChange= {handleChange} name="task" noFormItem={true} />
                     </div>
                     <div className="one columns">
                         <button onClick={onClickAdd} className="button-primary"><i className="fas fa-plus"></i></button>
