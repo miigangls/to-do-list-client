@@ -15,7 +15,7 @@ const Header = () => {
                 <h2>Lista de tareas</h2>
                 <div style={{marginLeft: 'auto'}} >
                     <button onClick={onClick}  className="button-primary">
-                        <i class="fas fa-power-off"></i>
+                        <i className="fas fa-power-off"></i>
                     </button>
                 </div>
             </header>
