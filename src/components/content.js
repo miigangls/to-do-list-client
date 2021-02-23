@@ -12,5 +12,5 @@ export const Content = ({children}) => {
 
 
 Content.propTypes = {
-    children: PropTypes.elementType,
+    children: PropTypes.object,
 };
