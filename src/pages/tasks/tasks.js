@@ -26,6 +26,7 @@ const Task = () => {
     // Create a new task
     async function onClickAdd (e) {
         e.preventDefault();
+        if(!useValues.task) return
         let rest = await fetchAddTask({userId, task: useValues.task, status: true })
         if(rest.error) console.log('no se puedo agregar la tarea', rest.error)
         fetchTasks()
