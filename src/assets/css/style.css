@@ -1,9 +1,9 @@
 @charset "UTF-8";
 @import url("http://fonts.googleapis.com/css?family=Lato:300,400");
 
+@import './fontawesome/css/all.css';
 @import './skeleton/normalize.css';
 @import './skeleton/skeleton.css';
-
 @import './responsive.css';
 @import './message.css';
 @import './list.css';
@@ -27,8 +27,15 @@ body {
     align-items: center!important;
     display: flex!important;
     flex: 0 0 auto;
-    width: 200px;
+    width: 300px;
     max-width: none;
+}
+.align-items > .item {
+    margin: 0 0.5em;
+}
+
+.align-items > .item:hover{
+    cursor: pointer;
 }
 
 .text-label {
