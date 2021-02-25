@@ -14,7 +14,7 @@ export function validateEmail(value) {
 
 export function filter(data, value) {
     if(value !== 'all' && value !== '' ){
-        data = data.filter(({data}) => data.status.toString() === value)
+        data = data.filter(({status}) => status.toString() === value)
     }
     return data
 }
