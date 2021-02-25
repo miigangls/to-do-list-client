@@ -1,4 +1,3 @@
-
 import { auth, db} from './config';
 
 // Register new user 
@@ -26,16 +25,14 @@ export async function closeSession() {
 export async function fetchTaskList({userId, order}) {
     return  await new Promise ((resolve, reject)=> {
         db.collection("tasks-list").where("userId", "==", userId).onSnapshot(function(querySnapshot) {
-            let data = []
+            let data = [], key = 1
             if(!querySnapshot.length) resolve({message: "ok", data})
-            querySnapshot.forEach(function(doc) {
+            querySnapshot.forEach((doc) => {
                 if (doc.exists) {
-                    data.push({id: doc.id, data: {...doc.data()}})
-                    resolve({message: "ok", data})
-                } else {
-                    resolve({message: "ok", data})
-                    console.log("No such document!");
-                }
+                    data.push({key, id: doc.id, ...doc.data()})
+                    key++
+                } 
+                resolve({message: "ok", data})
             })
         })
     }).catch(e => {
@@ -66,7 +63,6 @@ export async function fetchAddTask(params) {
  */
 export async function fetchDeleteTask({id}) {
     return  await new Promise ((resolve, reject)=> {
-        console.log(id);
         db.collection("tasks-list").doc(id).delete()
         .then((docRef) => {
             resolve({message: "ok", data: {id}})
@@ -109,5 +105,31 @@ export async function fetchActiveTask(params) {
         .catch((error) => {
             resolve({error: `Error adding document: ${error}`})
         });
+    })
+}
+
+
+
+/**
+ * 
+ * @param {*} params 
+ */
+export async function fetchByLabels({userId}) {
+    return  await new Promise ((resolve, reject)=> {
+        db.collection("labels").where("userId", "==", userId).onSnapshot(function(querySnapshot) {
+            let data = []
+            if(!querySnapshot.length) resolve({message: "ok", data})
+            querySnapshot.forEach(function(doc) {
+                if (doc.exists) {
+                    data.push({id: doc.id, data: {...doc.data()}})
+                    resolve({message: "ok", data})
+                } else {
+                    resolve({message: "ok", data})
+                    console.log("No such document!");
+                }
+            })
+        })
+    }).catch(e => {
+        console.log("No such document!", e);
     })
 }
